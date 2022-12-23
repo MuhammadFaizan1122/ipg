@@ -23,7 +23,7 @@ export default function Home() {
         <div className='mt-10 text-[#ffcb04]'>
           <p className='text-[32px] text-black mb-2 px-4 hidden sm:block'>Dashboard</p>
           <div className='mx-auto w-[100%] mb-10  rounded-2xl overflow-hidden'>
-            <Image src="/Gym-2-Banner.jpg" alt="" className='w-[100%] px-4 rounded-2xl' />
+            <img src="/Gym-2-Banner.jpg" alt="" className='w-[100%] px-4 rounded-2xl' />
           </div>
           <div className='grid grid-cols-4 sm:grid-cols-2'>
             <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[lightGreen] flex justify-center items-center my-2'>

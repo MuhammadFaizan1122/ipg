@@ -8,7 +8,7 @@ export default function Header() {
             <div className='flex w-[50%]'>
                 <Link className='flex' href="/">
                     <div className='w-[80px] h-[80px] cursor-pointer'>
-                        <Image src='/Iron-Power-Gym.png' className='w-[100%]' alt="iron power gym" />
+                        <img src='/Iron-Power-Gym.png' className='w-[100%]' alt="iron power gym" />
                     </div>
                     <p className='text-[30px] mt-[18px] logoText cursor-pointer sm:hidden'>IRON POWER <span className='text-[#ffcb04] font-bold'>GYM</span></p>
                 </Link>

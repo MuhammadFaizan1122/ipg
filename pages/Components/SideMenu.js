@@ -26,11 +26,11 @@ export default function SideMenu() {
           <Link href="/inactive-admissions">
             <li className={` ${router.route == "/inactive-admissions" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`}>Inactive Members</li>
           </Link>
-          <Link href="/">
-            <li className={` ${router.route == "/login" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`} onClick={() => handleLogout()}>Paid members</li>
+          <Link href="/charged">
+            <li className={` ${router.route == "/charged" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`}>Paid members</li>
           </Link>
-          <Link href="/">
-            <li className={` ${router.route == "/login" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`} onClick={() => handleLogout()}>Unpaid members</li>
+          <Link href="/expired-memberships">
+            <li className={` ${router.route == "/expired-memberships" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`}>Unpaid members</li>
           </Link>
           <Link href="/login">
             <li className={` ${router.route == "/login" ? "bg-[#ffcb04] text-white" : ""} mt-2 rounded-tr-3xl px-2 py-[12px] w-[100%] border-b-[2px] border-[#ffcb04] hover:bg-[#ffcb04] hover:text-white cursor-pointer transition-all duration-300`} onClick={() => handleLogout()}>Log Out</li>
