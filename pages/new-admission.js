@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { db, fsDb } from "../config/firebase";
-import { storage } from "../config/firebase";
+import {  fsDb } from "../config/firebase";
+// import { storage } from "../config/firebase";
 import { addDoc, collection } from "firebase/firestore"
 
 export default function NewAdmission() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Menu from './Menu'
-import Image from 'next/image'
+// import Image from 'next/image'
 export default function Header() {
     return (
         <div className='h-20 fixed w-[100%] px-8 flex shadow-lg justify-between bg-white z-20'>

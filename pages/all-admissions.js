@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Edit from './Components/Edit'
-import Admissions from "../constants/Admissions.json"
 import { MdDeleteOutline } from "react-icons/md"
-import Image from 'next/image'
+// import Image from 'next/image'
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore"
-import { db, fsDb } from "../config/firebase";
+import { fsDb } from "../config/firebase";
 
 export default function AllAdmissions() {
     const memberCollectionRef = collection(fsDb, "members")

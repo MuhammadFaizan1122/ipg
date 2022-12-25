@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Edit from './Components/Edit'
-import Admissions from "../constants/Admissions.json"
 import { MdDeleteOutline } from "react-icons/md"
 import { collection, getDocs } from 'firebase/firestore';
 import { fsDb } from '../config/firebase';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
-export default function expiredMemberships() {
-    const router = useRouter()
+export default function ExpiredMemberships() {
+    // const router = useRouter()
     const memberCollectionRef = collection(fsDb, "members")
     const [member, setMember] = useState([])
     // Data Fetching 

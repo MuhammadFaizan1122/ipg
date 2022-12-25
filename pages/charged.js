@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Edit from './Components/Edit'
-import Admissions from "../constants/Admissions.json"
 import { MdDeleteOutline } from "react-icons/md"
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore"
-import { db, fsDb } from "../config/firebase";
+import { collection, getDocs } from "firebase/firestore"
+import { fsDb } from "../config/firebase";
 
 export default function Memberships() {
     const memberCollectionRef = collection(fsDb, "members")

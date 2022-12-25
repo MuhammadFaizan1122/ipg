@@ -1,6 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore';
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { fsDb } from '../config/firebase';

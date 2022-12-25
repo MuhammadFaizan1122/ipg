@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Admissions from "../constants/Admissions.json"
-import { MdOutlineModeEdit, MdDeleteOutline } from "react-icons/md"
+import { MdDeleteOutline } from "react-icons/md"
 import { collection, getDocs } from 'firebase/firestore';
 import { fsDb } from '../config/firebase';
 import Edit from './Components/Edit';
+import { useRouter } from 'next/router';
 
 export default function ActiveAdmissions() {
+    const router = useRouter();
     const memberCollectionRef = collection(fsDb, "members")
     const [members, setMembers] = useState([])
     useEffect(() => {
