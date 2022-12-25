@@ -3,23 +3,23 @@ import Edit from './Components/Edit'
 import Admissions from "../constants/Admissions.json"
 import { MdDeleteOutline } from "react-icons/md"
 import Image from 'next/image'
-import { getDatabase, ref, onValue, remove, update, child } from "firebase/database"
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import { db, fsDb } from "../config/firebase";
 
 export default function AllAdmissions() {
     const memberCollectionRef = collection(fsDb, "members")
     const [check, setCheck] = useState([])
+
     // Data Fetching 
 
     useEffect(() => {
         const getting = async () => {
             const data = await getDocs(memberCollectionRef)
-            setCheck(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            const list = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            setCheck(list)
         }
         getting()
     }, [])
-
 
     // Delete member 
     const handleDelete = async (item) => {

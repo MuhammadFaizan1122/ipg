@@ -84,7 +84,7 @@ export default function CustomizedDialogs() {
                         <div className='mx-auto w-[85%] sm:w-[100%]'>
                             <div className='w-[100%] my-4'>
                                 <label className='w-[15%] py-2 capitalize'>Username</label><br />
-                                <input type="text" onChange={(e) => setUser(e.target.value)} alt="iron power gym login" className='outline-none p-2 w-[100%] border-b-[2px] border-[#ffcb04]' placeholder='Enter username' />
+                                <input type="text" autoFocus onChange={(e) => setUser(e.target.value)} alt="iron power gym login" className='outline-none p-2 w-[100%] border-b-[2px] border-[#ffcb04]' placeholder='Enter username' />
                                 <p className='text-[14px] text-[red] text-center  p-0 m-0'>{userErr}</p>
                             </div>
                             <div className='w-[100%] my-4'>

@@ -57,6 +57,8 @@ export default function Edit({ item }) {
     const [fees, setFees] = useState()
     const [CNIC, setCNIC] = useState()
     const [address, setAddress] = useState()
+    const [status, setStatus] = useState()
+    const [payDate, setPayDate] = useState()
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -65,13 +67,15 @@ export default function Edit({ item }) {
         setOpen(false);
     };
     useEffect(() => {
-        setName(item.member_name)
-        setFather(item.member_father)
-        setNum(item.member_num)
-        setDate(item.joining_date)
-        setFees(item.member_fees)
-        setCNIC(item.member_cnic)
-        setAddress(item.member_address)
+        setName(item?.member_name)
+        setFather(item?.member_father)
+        setNum(item?.member_num)
+        setDate(item?.joining_date)
+        setFees(item?.member_fees)
+        setCNIC(item?.member_cnic)
+        setAddress(item?.member_address)
+        setStatus(item?.member_status)
+        setPayDate(item?.pay_date)
     }, [])
 
     // Update member data 
@@ -86,6 +90,8 @@ export default function Edit({ item }) {
             member_fees: fees,
             member_cnic: CNIC,
             member_address: address,
+            member_status: status,
+            pay_date: payDate,
         }
         await updateDoc(userDoc, UpdatedData)
         handleClose()
@@ -135,14 +141,24 @@ export default function Edit({ item }) {
                                 <input type="text" alt="" onChange={(e) => setCNIC(e.target.value)} value={CNIC} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
                             </div>
                         </div>
+                        <div className='flex'>
+                            <div className='w-[100%] my-4'>
+                                <label className='w-[15%] py-2'>Enter Pay Date *</label><br />
+                                <input type="text" alt="" value={payDate} onChange={(e) => setPayDate(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                            </div>
+                            <div className='w-[100%] my-4'>
+                                <label className='w-[15%] py-2'>Enter Member Status *</label><br />
+                                <input type="text" alt="" value={status} onChange={(e) => setStatus(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
+                            </div>
+                        </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Client Address</label><br />
-                            <input type="text" alt="" onChange={(e) => setAddress(e.target.value)} value={address} className='outline-none p-2 w-[97.5%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter client address' />
+                            <label className='w-[15%] py-2'>Enter Address *</label><br />
+                            <input type="text" alt="" value={address} onChange={(e) => setAddress(e.target.value)} className='outline-none p-2 w-[97.5%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
                         </div>
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={()=>handleUpdate()} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded text-white'>Update</button>
+                    <button onClick={() => handleUpdate()} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded text-white'>Update</button>
                 </DialogActions>
             </BootstrapDialog>
         </div>
