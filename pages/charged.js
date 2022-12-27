@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Edit from './Components/Edit'
 import { MdDeleteOutline } from "react-icons/md"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import { fsDb } from "../config/firebase";
 
 export default function Memberships() {
@@ -30,6 +30,11 @@ export default function Memberships() {
         return filter
     }
 
+    // Delete member 
+    const handleDelete = async (item) => {
+        const userDoc = doc(fsDb, "members", item)
+        await deleteDoc(userDoc)
+    }
     return (
         <div className='w-[95%] mt-4 mx-auto'>
             <div className='border-b-[2px] border-[#ffcb04]'>

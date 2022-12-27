@@ -14,7 +14,7 @@ export default function NewAdmission() {
     const [status, setStatus] = useState()
     const [payDate, setPayDate] = useState()
     const [images, setImages] = useState([]);
-    const onChange = (imageList, addUpdateIndex) => {
+    const onChange = (imageList) => {
         // data for submit
         setImages(imageList);
     };

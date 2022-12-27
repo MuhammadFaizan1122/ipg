@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Edit from './Components/Edit'
 import { MdDeleteOutline } from "react-icons/md"
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { fsDb } from '../config/firebase';
 // import { useRouter } from 'next/router';
 
@@ -29,6 +29,11 @@ export default function ExpiredMemberships() {
             return currentDay > day && currentMonth > month
         })
         return filter
+    }
+    // Delete member 
+    const handleDelete = async (item) => {
+        const userDoc = doc(fsDb, "members", item)
+        await deleteDoc(userDoc)
     }
     return (
         <div className='w-[95%] mt-4 mx-auto'>

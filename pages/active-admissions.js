@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MdDeleteOutline } from "react-icons/md"
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { fsDb } from '../config/firebase';
 import Edit from './Components/Edit';
 import { useRouter } from 'next/router';
@@ -24,6 +24,11 @@ export default function ActiveAdmissions() {
         }
         getting()
     }, [])
+    // Delete member 
+    const handleDelete = async (item) => {
+        const userDoc = doc(fsDb, "members", item)
+        await deleteDoc(userDoc)
+    }
     return (
         <div className='w-[95%] mt-4 mx-auto'>
             <div className='border-b-[2px] border-[#ffcb04]'>
