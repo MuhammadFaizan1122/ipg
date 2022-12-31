@@ -38,7 +38,7 @@ export default function AllAdmissions() {
     }, [])
 
     // Delete member 
-    const handleDelete = async (item) => {
+    const handleDelete = async () => {
         if (delId != undefined || delId != "") {
             const userDoc = doc(fsDb, "members", delId)
             await deleteDoc(userDoc)
