@@ -14,6 +14,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
+
 export default function Menu() {
     const [state, setState] = React.useState({
         top: false,
@@ -71,7 +74,7 @@ export default function Menu() {
                         <ListItemIcon>
                             <PersonRemoveIcon />
                         </ListItemIcon>
-                        <ListItemText primary="inactive Members" />
+                        <ListItemText primary="Inactive Members" />
                     </ListItem>
                 </Link>
                 <Link href="/active-admissions">
@@ -80,6 +83,22 @@ export default function Menu() {
                             <GroupIcon />
                         </ListItemIcon>
                         <ListItemText primary="Active Members" />
+                    </ListItem>
+                </Link>
+                <Link href="/charged">
+                    <ListItem>
+                        <ListItemIcon>
+                            <DoneAllIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Paid Member" />
+                    </ListItem>
+                </Link>
+                <Link href="/expired-memberships">
+                    <ListItem>
+                        <ListItemIcon>
+                            <AnnouncementIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Unpaid Members" />
                     </ListItem>
                 </Link>
                 <Link href="/login">
