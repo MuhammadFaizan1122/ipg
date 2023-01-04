@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 export default function ActiveAdmissions() {
     const router = useRouter();
     const memberCollectionRef = collection(fsDb, "members")
+    const [loading, setLoading] = useState(true)
     const [members, setMembers] = useState([])
     useEffect(() => {
         const loginCheck = localStorage.getItem('logedIn');
@@ -20,6 +21,7 @@ export default function ActiveAdmissions() {
             let positive_array = activeList?.filter(function (value) {
                 return value.member_status == "active";
             });
+            setLoading(false)
             setMembers(positive_array)
         }
         getting()
@@ -48,23 +50,32 @@ export default function ActiveAdmissions() {
                 </div>
                 <div className='w-[100%] my-2 mb-10'>
                     {
-                        members.map((item, index) => {
-                            return (
-                                <div className='border-b-[1px] flex' key={index}>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[2%] text-center sm:hidden'>{index + 1}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[6%] h-[60px] sm:hidden'>
-                                        <img src={item.member_image != undefined ? item.member_image : "/profile.jpg"} className='w-auto mx-auto h-[100%]' alt="" />
-                                    </div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[22%] sm:w-[50%] sm:pl-2'>{item.member_name}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[20%] sm:hidden'>{item.member_father}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] text-center sm:hidden'>{item.member_status}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[20%] text-center'>{item.member_num}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] text-center sm:hidden'>{item.joining_date}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[15%] text-center'><Edit item={item} /></div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[15%] text-center'><button onClick={() => handleDelete(item.id)} className='bg-[red] hover:bg-[#ff00001a] hover:text-[red] border-[2px] duration-200 border-[red] px-4 sm:px-2 rounded text-white'><span className='hidden sm:block text-white'><MdDeleteOutline /></span> <span className='sm:hidden'>Delete</span></button></div>
-                                </div>
-                            )
-                        })
+                        loading ?
+                            <div className='text-center mt-10 mx-auto w-[100%]'>
+                                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            </div>
+                            :
+                            members.length == 0 ?
+                                <div className='text-center mt-10 mx-auto w-[100%]'>
+                                    <div class="text-[22px]">No Data Found</div>
+                                </div> :
+                                members.map((item, index) => {
+                                    return (
+                                        <div className='border-b-[1px] flex' key={index}>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[2%] text-center sm:hidden'>{index + 1}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[6%] h-[60px] sm:hidden'>
+                                                <img src={item.member_image != undefined ? item.member_image : "/profile.jpg"} className='w-auto mx-auto h-[100%]' alt="" />
+                                            </div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[22%] sm:w-[50%] sm:pl-2'>{item.member_name}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[20%] sm:hidden'>{item.member_father}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] text-center sm:hidden'>{item.member_status}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[20%] text-center'>{item.member_num}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] text-center sm:hidden'>{item.joining_date}</div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[15%] text-center'><Edit item={item} /></div>
+                                            <div className='py-2 border-[1px] border-[transparent] truncate w-[10%] sm:w-[15%] text-center'><button onClick={() => handleDelete(item.id)} className='bg-[red] hover:bg-[#ff00001a] hover:text-[red] border-[2px] duration-200 border-[red] px-4 sm:px-2 rounded text-white'><span className='hidden sm:block text-white'><MdDeleteOutline /></span> <span className='sm:hidden'>Delete</span></button></div>
+                                        </div>
+                                    )
+                                })
                     }
                 </div>
             </div>

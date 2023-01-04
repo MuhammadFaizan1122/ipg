@@ -5,6 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
+import ImageUploading from 'react-images-uploading';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { fsDb } from '../../config/firebase';
@@ -59,7 +60,58 @@ export default function Edit({ item }) {
     const [address, setAddress] = useState()
     const [status, setStatus] = useState()
     const [payDate, setPayDate] = useState()
+    const [images, setImages] = useState([]);
 
+    // Image Update 
+    const onChange = (imageList) => {
+        // data for submit
+        setImages(imageList);
+    };
+    const ImageFunction = () => {
+        return (
+            <div className="border-[2px] border-[#ffcb04] w-[95%] rounded flex justify-center">
+                <ImageUploading
+                    value={images}
+                    onChange={onChange}
+                    // maxNumber={maxNumber}
+                    dataURLKey="data_url"
+                >
+                    {({
+                        imageList,
+                        onImageUpload,
+                        onImageUpdate,
+                        onImageRemove,
+                        isDragging,
+                        dragProps,
+                    }) => (
+                        // write your building UI
+                        <div className="flex text-center">
+                            {images?.length == 0 ? <button
+                                className='h-32'
+                                style={isDragging ? { color: 'red' } : undefined}
+                                onClick={onImageUpload}
+                                {...dragProps}
+                            >
+                                Click or Drop here
+                            </button> : ""}
+                            &nbsp;
+                            {imageList.map((image, index) => (
+                                <div key={index} className="pt-2">
+                                    <div className='w-40 h-40 mx-auto'>
+                                        <img src={image['data_url']} alt="" className='h-[100%] mx-auto' />
+                                    </div>
+                                    <div className="image-item__btn-wrapper">
+                                        <button className='text-white rounded p-2 m-2 bg-[green]' onClick={() => onImageUpdate(index)}>Update</button>
+                                        <button className='text-white rounded p-2 m-2 bg-[red]' onClick={() => onImageRemove(index)}>Remove</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </ImageUploading>
+            </div>
+        );
+    }
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -76,10 +128,12 @@ export default function Edit({ item }) {
         setAddress(item?.member_address)
         setStatus(item?.member_status)
         setPayDate(item?.pay_date)
+        setImages([item?.member_image])
+
     }, [])
 
     // Update member data 
-
+console.log(images)
     const handleUpdate = async () => {
         const userDoc = doc(fsDb, "members", item.id)
         const UpdatedData = {
@@ -92,6 +146,7 @@ export default function Edit({ item }) {
             member_address: address,
             member_status: status,
             pay_date: payDate,
+            member_image: images[0],
         }
         await updateDoc(userDoc, UpdatedData)
         handleClose()
@@ -102,7 +157,7 @@ export default function Edit({ item }) {
             <button onClick={handleClickOpen} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 rounded text-white'>Edit</button>
             <BootstrapDialog
                 onClose={handleClose}
-
+                className="editPopup"
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
@@ -110,7 +165,7 @@ export default function Edit({ item }) {
                     Client Information
                 </BootstrapDialogTitle>
                 <DialogContent dividers >
-                    <div className='w-[800px]'>
+                    <div className='w-[100%] mx-auto'>
                         <div className='flex'>
                             <div className='w-[100%] my-4'>
                                 <label className='w-[15%] py-2'>Client Name</label><br />
@@ -151,9 +206,19 @@ export default function Edit({ item }) {
                                 <input type="text" alt="" value={status} onChange={(e) => setStatus(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
                             </div>
                         </div>
-                        <div className='w-[100%] my-4'>
+                        {/* <div className='w-[100%] my-4'>
                             <label className='w-[15%] py-2'>Enter Address *</label><br />
                             <input type="text" alt="" value={address} onChange={(e) => setAddress(e.target.value)} className='outline-none p-2 w-[97.5%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                        </div> */}
+                        <div className='flex'>
+                            <div className='w-[100%] my-4'>
+                                <label className='w-[15%] py-2'>Upload member image</label><br />
+                                {<ImageFunction />}
+                            </div>
+                            <div className='w-[100%] my-4'>
+                                <label className='w-[15%] py-2'>Enter Address *</label><br />
+                                <input type="text" alt="" value={address} onChange={(e) => (setAddress(e.target.value))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                            </div>
                         </div>
                     </div>
                 </DialogContent>

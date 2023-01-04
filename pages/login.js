@@ -80,7 +80,7 @@ export default function CustomizedDialogs() {
                     <p className='text-[30px] logoText cursor-pointer'>IRON POWER <span className='text-[#ffcb04] font-bold'>GYM</span></p>
                 </BootstrapDialogTitle>
                 <DialogContent>
-                    <div className='w-[600px] sm:w-[100%]'>
+                    <div className='sm:w-[100%]'>
                         <div className='mx-auto w-[85%] sm:w-[100%]'>
                             <div className='w-[100%] my-4'>
                                 <label className='w-[15%] py-2 capitalize'>Username</label><br />

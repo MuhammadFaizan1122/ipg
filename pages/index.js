@@ -1,5 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore';
 import Head from 'next/head'
+import Link from 'next/link';
 // import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
@@ -43,6 +44,7 @@ export default function Home() {
     }
     getting()
   }, [])
+
   return (
     <div className=''>
       <Head>
@@ -51,36 +53,47 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='w-[100%] bg-[#fff] overflow-hidden'>
-        <div className='mt-10 text-[#ffcb04]'>
-          <p className='text-[32px] text-black mb-2 px-4 hidden sm:block'>Dashboard</p>
-          <div className='mx-auto w-[100%] mb-10  rounded-2xl overflow-hidden'>
-            <img src="/Gym-2-Banner.jpg" alt="" className='w-[100%] px-4 rounded-2xl' />
-          </div>
-          <div className='grid grid-cols-4 sm:grid-cols-2'>
-            <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[lightGreen] flex justify-center items-center my-2'>
-              <div>
-                <p className='text-[20px] text-black text-center font-semibold my-2'>Total Member</p>
-                <p className='text-[40px] text-black text-center font-semibold my-2'>{members?.length}</p>
+        <div className='mt-0 text-[#ffcb04]'>
+          <p className='text-[32px] text-black mb-0 px-4 hidden sm:block'>Dashboard</p>
+          <div className='mx-auto bg-[url("/IronPowerGymBanner.jpg")] bg-cover w-[100%] h-[88vh] rounded-2xl overflow-hidden'>
+            {/* <img src="/IronPowerGymBanner.jpg" alt="" className='w-[100%] px-4 rounded-2xl' /> */}
+            <div className='grid grid-cols-4 sm:grid-cols-2'>
+              <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[lightGreen] flex justify-center items-center my-2'>
+                <Link href="/all-admissions">
+                  <div>
+                    <p className='text-[20px] text-black text-center font-semibold my-2'>Total Member</p>
+                    <p className='text-[40px] text-black text-center font-semibold my-2'>{members?.length}</p>
+                  </div>
+                </Link>
               </div>
-            </div>
-            <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[pink]  flex justify-center items-center my-2'><div>
-              <p className='text-[20px] text-black text-center font-semibold my-2'>Active Member</p>
-              <p className='text-[40px] text-black text-center font-semibold my-2'>{activeMembers?.length}</p>
-            </div>
-            </div>
-            <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[#ffcb04]  flex justify-center items-center my-2'><div>
-              <p className='text-[20px] text-black text-center font-semibold my-2'>Inactive Member</p>
-              <p className='text-[40px] text-black text-center font-semibold my-2'>{inactiveMembers?.length}</p>
-            </div>
-            </div>
-            <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[#EDFF71]  flex justify-center items-center my-2'><div>
-              <p className='text-[20px] text-black text-center font-semibold my-2'>Total Expired Memberships</p>
-              <p className='text-[40px] text-black text-center font-semibold my-2'>{expired.length}</p>
-            </div>
+              <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[pink]  flex justify-center items-center my-2'>
+                <Link href="/active-admissions">
+                  <div>
+                    <p className='text-[20px] text-black text-center font-semibold my-2'>Active Member</p>
+                    <p className='text-[40px] text-black text-center font-semibold my-2'>{activeMembers?.length}</p>
+                  </div>
+                </Link>
+              </div>
+              <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[#ffcb04]  flex justify-center items-center my-2'>
+                <Link href="/inactive-admissions">
+                  <div>
+                    <p className='text-[20px] text-black text-center font-semibold my-2'>Inactive Member</p>
+                    <p className='text-[40px] text-black text-center font-semibold my-2'>{inactiveMembers?.length}</p>
+                  </div>
+                </Link>
+              </div>
+              <div className='shadow-xl h-40 mx-4 rounded-2xl bg-[#EDFF71]  flex justify-center items-center my-2'>
+                <Link href="/expired-memberships">
+                  <div>
+                    <p className='text-[20px] text-black text-center font-semibold my-2'>Total Expired Memberships</p>
+                    <p className='text-[40px] text-black text-center font-semibold my-2'>{expired.length}</p>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
