@@ -98,7 +98,7 @@ export default function Edit({ item }) {
                             {imageList.map((image, index) => (
                                 <div key={index} className="pt-2">
                                     <div className='w-40 h-40 mx-auto'>
-                                        <img src={image['data_url']} alt="" className='h-[100%] mx-auto' />
+                                        {/* <img src={image['data_url']} alt="" className='h-[100%] mx-auto' /> */}
                                     </div>
                                     <div className="image-item__btn-wrapper">
                                         <button className='text-white rounded p-2 m-2 bg-[green]' onClick={() => onImageUpdate(index)}>Update</button>
@@ -131,9 +131,8 @@ export default function Edit({ item }) {
         setImages([item?.member_image])
 
     }, [])
-
+    const [updating, setUpdating] = useState(false)
     // Update member data 
-console.log(images)
     const handleUpdate = async () => {
         const userDoc = doc(fsDb, "members", item.id)
         const UpdatedData = {
@@ -146,10 +145,11 @@ console.log(images)
             member_address: address,
             member_status: status,
             pay_date: payDate,
-            member_image: images[0],
+            member_image: "",
         }
         await updateDoc(userDoc, UpdatedData)
         handleClose()
+        setUpdating(false)
     }
 
     return (
@@ -223,7 +223,7 @@ console.log(images)
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={() => handleUpdate()} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded text-white'>Update</button>
+                    <button onClick={() => (handleUpdate(), setUpdating(true))} disabled={updating == true} className={`bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded text-white ${updating && "bg-[grey] border-[grey] hover:border-[grey] hover:text-[white] hover:bg-[grey]"}`}>Update</button>
                 </DialogActions>
             </BootstrapDialog>
         </div>

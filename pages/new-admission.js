@@ -203,6 +203,7 @@ export default function NewAdmission() {
 
                 </div>
                 <button onClick={() => handleMember()} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] p-2 rounded text-white float-right  m-4'>Add Member</button>
+                {/* <button onClick={() => handleNotification()} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] p-2 rounded text-white float-right  m-4'>Notifaication</button> */}
             </div>
             <Modal
                 open={open}
