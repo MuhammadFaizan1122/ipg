@@ -34,37 +34,38 @@ export default function Layout({ children }) {
     const router = useRouter()
     useLayoutEffect(() => {
         const loginCheck = localStorage.getItem('logedIn');
-        const people = [
-            {
-                name: "client no 1"
-            },
-            {
-                name: "client no 2"
-            },
-        ]
-        const handleNotification = () => {
-            Notification.requestPermission().then((perm) => {
-                if (perm === "granted") {
-                    unPaid(member).map((item) => {
-                        return (
-                            new Notification("IRON POWER GYM", {
-                                body: `${item.member_name} ${item.member_father} was paid on ${item.pay_date}`,
-                                icon: "/Iron-Power-Gym.png"
-                            })
-                        )
-                    })
-                }
-            })
-        }
+
         if (loginCheck == undefined) {
             router.push('/login')
         } else if (loginCheck != undefined) {
-            handleNotification()
             setTimeout(() => {
                 localStorage.removeItem("logedIn")
             }, 3600000);
         }
+        console.log(loginCheck)
+
     }, [])
+    const handleNotification = () => {
+        Notification.requestPermission().then((perm) => {
+            if (perm === "granted") {
+                unPaid(member).map((item) => {
+                    return (
+                        new Notification("IRON POWER GYM", {
+                            body: `${item.member_name} ${item.member_father} was paid on ${item.pay_date}`,
+                            icon: "/Iron-Power-Gym.png"
+                        })
+                    )
+                })
+            }
+        })
+    }
+    useEffect(() => {
+        if (unPaid(member).length != 0) {
+            handleNotification()
+        }
+    }, [unPaid(member)])
+
+
     return (
         <>
             <Header />
