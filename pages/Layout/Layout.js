@@ -3,9 +3,12 @@ import Header from '../Components/Header'
 import SideMenu from '../Components/SideMenu'
 import { useRouter } from 'next/router';
 import { fsDb } from "../../config/firebase";
+import { useTheme } from 'next-themes'
+
 import { collection, getDocs } from 'firebase/firestore';
 
 export default function Layout({ children }) {
+    const { setTheme } = useTheme()
     const memberCollectionRef = collection(fsDb, "members")
     const [member, setMember] = useState([])
     // Data Fetching 
@@ -17,6 +20,7 @@ export default function Layout({ children }) {
         }
         getting()
     }, [])
+    setTheme('system')
     function unPaid(member) {
         let currentDay = new Date().getDate()
         let currentMonth = new Date().getMonth()
@@ -69,7 +73,7 @@ export default function Layout({ children }) {
             <Header />
             <SideMenu />
             <div className="">
-                <div className='pt-20 pl-[15%] tab:pl-[25%] sm:pl-0'>{children}</div>
+                <div className='pt-20 pl-[15%] tab:pl-[25%] sm:pl-0 dark:bg-black'>{children}</div>
             </div>
         </>
     )

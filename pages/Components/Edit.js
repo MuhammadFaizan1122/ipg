@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { fsDb } from '../../config/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
+import {AiOutlineEdit} from "react-icons/ai"
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -132,7 +133,7 @@ export default function Edit({ item }) {
 
     }, [])
     const [updating, setUpdating] = useState(false)
-    
+
     // Update member data 
     const handleUpdate = async () => {
         const userDoc = doc(fsDb, "members", item.id)
@@ -155,75 +156,75 @@ export default function Edit({ item }) {
 
     return (
         <div>
-            <button onClick={handleClickOpen} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 rounded text-white'>Edit</button>
+            <button onClick={handleClickOpen} className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 rounded text-white sm:px-2'><span className='hidden sm:block text-white'><AiOutlineEdit /></span> <span className='sm:hidden'>Delete</span></button>
             <BootstrapDialog
                 onClose={handleClose}
-                className="editPopup"
+                className="editPopup "
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
-                <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                <BootstrapDialogTitle className="dark:bg-[#1e1e1e] dark:text-white" id="customized-dialog-title" onClose={handleClose}>
                     Client Information
                 </BootstrapDialogTitle>
-                <DialogContent dividers >
+                <DialogContent dividers className='dark:bg-[#1e1e1e]'>
                     <div className='w-[100%] mx-auto'>
                         <div className='flex'>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client Name</label><br />
-                                <input type="text" alt="" onChange={(e) => setName(e.target.value)} value={name} className='outline-none p-2 w-[95%] border-[2px] border-[#ffcb04] rounded' placeholder='Enter name' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client Name</label><br />
+                                <input type="text" alt="" onChange={(e) => setName(e.target.value)} value={name} className='outline-none p-2 w-[95%] border-[2px] border-[#ffcb04] rounded dark:text-white' placeholder='Enter name' />
                             </div>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client Father Name  </label><br />
-                                <input type="text" alt="" onChange={(e) => setFather(e.target.value)} value={father} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter father name' />
-                            </div>
-                        </div>
-                        <div className='flex'>
-                            <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client Phone Number</label><br />
-                                <input type="text" alt="" onChange={(e) => setNum(e.target.value)} value={num} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter phone number' />
-                            </div>
-                            <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client Joining Date</label><br />
-                                <input type="text" alt="" onChange={(e) => setDate(e.target.value)} value={date} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter joining date' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client Father Name  </label><br />
+                                <input type="text" alt="" onChange={(e) => setFather(e.target.value)} value={father} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded dark:text-white' placeholder='Enter father name' />
                             </div>
                         </div>
                         <div className='flex'>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client Advance Fees</label><br />
-                                <input type="text" alt="" onChange={(e) => setFees(e.target.value)} value={fees} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter advance fees' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client Phone Number</label><br />
+                                <input type="text" alt="" onChange={(e) => setNum(e.target.value)} value={num} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded dark:text-white' placeholder='Enter phone number' />
                             </div>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Client CNIC</label><br />
-                                <input type="text" alt="" onChange={(e) => setCNIC(e.target.value)} value={CNIC} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client Joining Date</label><br />
+                                <input type="text" alt="" onChange={(e) => setDate(e.target.value)} value={date} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded dark:text-white' placeholder='Enter joining date' />
                             </div>
                         </div>
                         <div className='flex'>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Enter Pay Date *</label><br />
-                                <input type="text" alt="" value={payDate} onChange={(e) => setPayDate(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client Advance Fees</label><br />
+                                <input type="text" alt="" onChange={(e) => setFees(e.target.value)} value={fees} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter advance fees' />
                             </div>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Enter Member Status *</label><br />
-                                <input type="text" alt="" value={status} onChange={(e) => setStatus(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Client CNIC</label><br />
+                                <input type="text" alt="" onChange={(e) => setCNIC(e.target.value)} value={CNIC} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter CNIC' />
+                            </div>
+                        </div>
+                        <div className='flex'>
+                            <div className='w-[100%] my-4'>
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Enter Pay Date *</label><br />
+                                <input type="text" alt="" value={payDate} onChange={(e) => setPayDate(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter address' />
+                            </div>
+                            <div className='w-[100%] my-4'>
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Enter Member Status *</label><br />
+                                <input type="text" alt="" value={status} onChange={(e) => setStatus(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter CNIC' />
                             </div>
                         </div>
                         {/* <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Address *</label><br />
-                            <input type="text" alt="" value={address} onChange={(e) => setAddress(e.target.value)} className='outline-none p-2 w-[97.5%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                            <label className='truncate w-[15%] py-2 dark:text-white'>Enter Address *</label><br />
+                            <input type="text" alt="" value={address} onChange={(e) => setAddress(e.target.value)} className='outline-none p-2 w-[97.5%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter address' />
                         </div> */}
                         <div className='flex'>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Upload member image</label><br />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Upload member image</label><br />
                                 {<ImageFunction />}
                             </div>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2'>Enter Address *</label><br />
-                                <input type="text" alt="" value={address} onChange={(e) => (setAddress(e.target.value))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
+                                <label className='truncate w-[15%] py-2 dark:text-white'>Enter Address *</label><br />
+                                <input type="text" alt="" value={address} onChange={(e) => (setAddress(e.target.value))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04] dark:text-white' placeholder='Enter address' />
                             </div>
                         </div>
                     </div>
                 </DialogContent>
-                <DialogActions>
+                <DialogActions className='dark:bg-[#1e1e1e]'>
                     <button onClick={() => (handleUpdate(), setUpdating(true))} disabled={updating == true} className={`bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded text-white ${updating && "bg-[grey] border-[grey] hover:border-[grey] hover:text-[white] hover:bg-[grey]"}`}>Update</button>
                 </DialogActions>
             </BootstrapDialog>

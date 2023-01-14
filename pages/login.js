@@ -69,32 +69,32 @@ export default function CustomizedDialogs() {
             {/* <button className='bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 rounded text-white'>Edit</button> */}
             <BootstrapDialog
                 aria-labelledby="customized-dialog-title"
-                className='bg-white'
+                className='bg-white dark:bg-[#2C2C2C]'
                 open={open}
             >
-                <BootstrapDialogTitle className="text-center">
+                <BootstrapDialogTitle className="text-center dark:bg-[#1e1e1e]">
                     <div className='w-[100px] mx-auto'>
                         <img src='/Iron-Power-Gym.png' className='w-[100%]' alt="iron power gym" />
                     </div>
-                    <p className='text-[30px] logoText cursor-pointer'>IRON POWER <span className='text-[#ffcb04] font-bold'>GYM</span></p>
+                    <p className='text-[30px] logoText cursor-pointer dark:text-white'>IRON POWER <span className='text-[#ffcb04] font-bold'>GYM</span></p>
                 </BootstrapDialogTitle>
-                <DialogContent>
+                <DialogContent className='dark:bg-[#1e1e1e]'>
                     <div className='sm:w-[100%]'>
                         <div className='mx-auto w-[85%] sm:w-[100%]'>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2 capitalize'>Username</label><br />
-                                <input type="text" autoFocus onChange={(e) => setUser(e.target.value)} alt="iron power gym login" className='outline-none p-2 w-[100%] border-b-[2px] border-[#ffcb04]' placeholder='Enter username' />
+                                <label className='w-[15%] py-2 capitalize dark:text-white'>Username</label><br />
+                                <input type="text" autoFocus onChange={(e) => setUser(e.target.value)} alt="iron power gym login" className='dark:text-white outline-none p-2 w-[100%] border-b-[2px] border-[#ffcb04]' placeholder='Enter username' />
                                 <p className='text-[14px] text-[red] text-center  p-0 m-0'>{userErr}</p>
                             </div>
                             <div className='w-[100%] my-4'>
-                                <label className='w-[15%] py-2 capitalize'>Password </label><br />
-                                <input type="password" onChange={(e) => setPass(e.target.value)} alt="iron power gym login" className='outline-none p-2 w-[100%]  border-b-[2px] border-[#ffcb04]' placeholder='Enter password' />
+                                <label className='w-[15%] py-2 capitalize dark:text-white'>Password </label><br />
+                                <input type="password" onChange={(e) => setPass(e.target.value)} alt="iron power gym login" className='dark:text-white outline-none p-2 w-[100%]  border-b-[2px] border-[#ffcb04]' placeholder='Enter password' />
                                 <p className='text-[14px] text-[red] text-center p-0 m-0'>{passErr}</p>
                             </div>
                         </div>
                     </div>
+                    <button onClick={handleLogin} className='mx-auto w-[80%] flex my-8 text-center justify-center mb-8 bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded-full text-white'>Login</button>
                 </DialogContent>
-                <button onClick={handleLogin} className='mx-auto w-[80%] my-4 mb-8 bg-[#ffcb04] hover:bg-[#ffcb043b] hover:text-[#ffcb04] border-[2px] duration-200 border-[#ffcb04] px-4 py-2 rounded-full text-white'>Login</button>
             </BootstrapDialog>
         </div>
     );

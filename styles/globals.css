@@ -1,6 +1,5 @@
 html,
 body {
-background-color: #fff;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -154,4 +153,15 @@ a {
   100% {
     opacity: 0;
   }
+}
+
+:root {
+  /* Your default theme */
+  --background: green;
+  --foreground: green;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
 }

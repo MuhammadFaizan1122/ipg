@@ -145,56 +145,56 @@ export default function NewAdmission() {
                 <div className='my-2'>
                     <div className='flex'>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Name *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Name *</label><br />
                             <input type="text" alt="" value={name} onChange={(e) => (setName(e.target.value), setNameErr(""))} className='outline-none p-2 w-[95%] border-[2px] border-[#ffcb04] rounded' placeholder='Enter name' />
                             <span className='text-[red] text-[14px]'>{nameErr}</span>
                         </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Father Name  </label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Father Name  </label><br />
                             <input type="text" alt="" value={father} onChange={(e) => setFather(e.target.value)} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter father name' />
                         </div>
                     </div>
                     <div className='flex'>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Phone Number *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Phone Number *</label><br />
                             <input type="text" alt="" value={num} onChange={(e) => (setNum(e.target.value), setNumErr(""))} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter phone number' />
                             <span className='text-[red] text-[14px]'>{numErr}</span>
                         </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Joining Date *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Joining Date *</label><br />
                             <input type="text" alt="" value={date} onChange={(e) => (setDate(e.target.value), setDateErr(""))} className='outline-none p-2 w-[95%]  border-[2px] border-[#ffcb04] rounded' placeholder='Enter joining date' />
                             <span className='text-[red] text-[14px]'>{dateErr}</span>
                         </div>
                     </div>
                     <div className='flex'>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Advance Fees</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Advance Fees</label><br />
                             <input type="text" alt="" value={fees} onChange={(e) => setFees(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter advance fees' />
                         </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter CNIC</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter CNIC</label><br />
                             <input type="text" alt="" value={CNIC} onChange={(e) => setCNIC(e.target.value)} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter CNIC' />
                         </div>
                     </div>
                     <div className='flex'>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Pay Date *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Pay Date *</label><br />
                             <input type="text" alt="" value={payDate} onChange={(e) => (setPayDate(e.target.value), setPayDateErr(""))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter pay date' />
                             <span className='text-[red] text-[14px]'>{payDateErr}</span>
                         </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Member Status *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Member Status *</label><br />
                             <input type="text" alt="" value={status} onChange={(e) => (setStatus(e.target.value), setStatusErr(""))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter status' />
                             <span className='text-[red] text-[14px]'>{statusErr}</span>
                         </div>
                     </div>
                     <div className='flex'>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Upload member image</label><br />
+                            <label className='truncate w-[15%] py-2'>Upload member image</label><br />
                             {<ImageFunction />}
                         </div>
                         <div className='w-[100%] my-4'>
-                            <label className='w-[15%] py-2'>Enter Address *</label><br />
+                            <label className='truncate w-[15%] py-2'>Enter Address *</label><br />
                             <input type="text" alt="" value={address} onChange={(e) => (setAddress(e.target.value), setAddressErr(""))} className='outline-none p-2 w-[95%] rounded border-[2px] border-[#ffcb04]' placeholder='Enter address' />
                             <span className='text-[red] text-[14px]'>{addressErr}</span>
                         </div>

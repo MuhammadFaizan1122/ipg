@@ -16,7 +16,7 @@ export default function SideMenu() {
     localStorage.removeItem("logedIn")
   }
   return (
-    <div className='fixed top-20 w-[15%] tab:w-[25%] h-[100%] bg-[#ffcb040a] sm:hidden ls:hidden'>
+    <div className='fixed top-20 w-[15%] tab:w-[25%] h-[100%] bg-[#ffcb040a] sm:hidden ls:hidden dark:bg-[#1E1E1E]'>
       <div>
         <ul className=''>
           <Link href="/">
