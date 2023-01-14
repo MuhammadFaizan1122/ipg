@@ -63,7 +63,6 @@ export default function CustomizedDialogs() {
             handleClose()
             router.push('/')
         }
-
     }
     return (
         <div>

@@ -40,7 +40,6 @@ export default function NewAdmission() {
     const [addressErr, setAddressErr] = useState("")
     const [payDateErr, setPayDateErr] = useState("")
     const [statusErr, setStatusErr] = useState("")
-
     const onChange = (imageList) => {
         // data for submit
         setImages(imageList);

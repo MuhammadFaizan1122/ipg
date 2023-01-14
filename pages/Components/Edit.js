@@ -98,7 +98,7 @@ export default function Edit({ item }) {
                             {imageList.map((image, index) => (
                                 <div key={index} className="pt-2">
                                     <div className='w-40 h-40 mx-auto'>
-                                        {/* <img src={image['data_url']} alt="" className='h-[100%] mx-auto' /> */}
+                                        <img src={image['data_url']} alt="" className='h-[100%] mx-auto' />
                                     </div>
                                     <div className="image-item__btn-wrapper">
                                         <button className='text-white rounded p-2 m-2 bg-[green]' onClick={() => onImageUpdate(index)}>Update</button>
@@ -128,10 +128,11 @@ export default function Edit({ item }) {
         setAddress(item?.member_address)
         setStatus(item?.member_status)
         setPayDate(item?.pay_date)
-        setImages([item?.member_image])
+        setImages([{ data_url: item?.member_image }])
 
     }, [])
     const [updating, setUpdating] = useState(false)
+    
     // Update member data 
     const handleUpdate = async () => {
         const userDoc = doc(fsDb, "members", item.id)
@@ -145,7 +146,7 @@ export default function Edit({ item }) {
             member_address: address,
             member_status: status,
             pay_date: payDate,
-            member_image: "",
+            member_image: images[0].data_url,
         }
         await updateDoc(userDoc, UpdatedData)
         handleClose()

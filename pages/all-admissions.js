@@ -80,7 +80,7 @@ export default function AllAdmissions() {
                             return (
                                 <div className='border-b-[1px] flex items-center' key={index}>
                                     <div className='py-2 border-[1px] border-[transparent] truncate w-[2%] text-center sm:hidden'>{index + 1}</div>
-                                    <div className='py-2 border-[1px] border-[transparent] truncate w-[6%] h-[60px] sm:hidden '>
+                                    <div className='py-2 border-[1px] border-[transparent] px-2 truncate w-[6%] h-[60px] sm:hidden '>
                                         <img src={item.member_image != undefined ? item.member_image : "/profile.jpg"} className='w-auto mx-auto h-[100%]' alt="" />
                                     </div>
                                     <div className='py-2 border-[1px] border-[transparent] truncate w-[22%] sm:w-[50%] sm:pl-2'>{item.member_name}</div>

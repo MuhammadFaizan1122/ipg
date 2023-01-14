@@ -42,8 +42,6 @@ export default function Layout({ children }) {
                 localStorage.removeItem("logedIn")
             }, 3600000);
         }
-        console.log(loginCheck)
-
     }, [])
     const handleNotification = () => {
         Notification.requestPermission().then((perm) => {
@@ -59,11 +57,11 @@ export default function Layout({ children }) {
             }
         })
     }
-    useEffect(() => {
-        if (unPaid(member).length != 0) {
-            handleNotification()
-        }
-    }, [unPaid(member)])
+        setInterval(() => {
+            if (unPaid(member).length != 0) {
+                handleNotification()
+            }
+        }, 3600000);
 
 
     return (
